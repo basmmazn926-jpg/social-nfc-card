@@ -2,16 +2,25 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- منع التخزين المؤقت (cache) -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!-- SEO + التحقق من Google -->
     <meta name="google-site-verification" content="AzYcKNS4ugYLOTxEDIIwA6vuqKscLP-KDw3MnYSD1No" />
-    <title>بطاقة محمود الذكية - Mahmoud NFC Card</title>
     <meta name="description"
         content="بطاقة NFC ذكية تحتوي على روابط التواصل الاجتماعي الخاصة بمحمود يمكن مشاركتها بسهولة عن طريق اللمس.">
     <meta name="robots" content="index, follow">
 
-    <!-- إعدادات العرض للأجهزة المختلفة -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بطاقة محمود الذكية - Mahmoud NFC Card</title>
+
+    <!-- أيقونات Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         body {
             font-family: 'Times New Roman', Times, serif;
@@ -33,7 +42,6 @@
             border-radius: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             display: inline-block;
-
         }
 
         a {
@@ -51,7 +59,7 @@
             transition: all 0.3s ease;
             font-size: 24px;
             font-weight: bold;
-            box-shadow: 0 4px 8px rgb(255, 255, 255, 0.8);
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.8);
         }
 
         a:hover {
@@ -66,13 +74,12 @@
             border-radius: 50%;
             margin-bottom: 20px;
             border: 2px solid rgb(218, 207, 207);
-            box-shadow: 0 0 10px rgb(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
         }
 
         h1 {
             color: white;
-            margin: 10px 0;
-            margin-bottom: 20px;
+            margin: 10px 0 20px;
         }
 
         a i {
@@ -102,6 +109,7 @@
         <img src="mmm.jpg" alt="photo">
         <h1>محمود المفرجي</h1>
         <p>طالب في جامعة الموصل كلية الادارة و الاقتصاد قسم نظم معلومات ادارية المرحلة الرابعة</p>
+
         <a href="https://instagram.com/m_h.25d" target="_blank">
             <i class="fab fa-instagram" style="color: #e1306c;"></i>
             <span>انستغرام</span>
@@ -122,29 +130,18 @@
             <span>واتساب</span>
         </a>
     </div>
-    
+
+    <!-- كود إعادة تحميل الصفحة عند الرجوع إليها -->
     <script>
         window.addEventListener('pageshow', function (event) {
-            if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
+            const navType = performance.getEntriesByType("navigation")[0].type;
+            if (event.persisted || navType === "back_forward") {
+                console.log("🔁 إعادة تحميل الصفحة بعد الرجوع إليها");
                 window.location.reload();
             }
         });
     </script>
 
-
-
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
