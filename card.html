@@ -2,70 +2,61 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- منع التخزين المؤقت (cache) -->
+    <!-- محاولة لمنع التخزين المؤقت -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
 
-    <!-- SEO + التحقق من Google -->
-    <meta name="google-site-verification" content="AzYcKNS4ugYLOTxEDIIwA6vuqKscLP-KDw3MnYSD1No" />
-    <meta name="description"
-        content="بطاقة NFC ذكية تحتوي على روابط التواصل الاجتماعي الخاصة بمحمود يمكن مشاركتها بسهولة عن طريق اللمس.">
-    <meta name="robots" content="index, follow">
-
     <title>بطاقة محمود الذكية - Mahmoud NFC Card</title>
-
-    <!-- أيقونات Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
         body {
             font-family: 'Times New Roman', Times, serif;
-            background-color: #333;
-            padding: 20px 0;
+            background: #333;
             margin: 0;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            padding: 20px 0;
         }
 
         .carde {
             width: 300px;
-            background-color: black;
+            background: #000;
             padding: 20px;
-            text-align: center;
             border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 10px rgba(0, 0, 0, .5);
             display: inline-block;
         }
 
         a {
+            display: flex;
             align-items: center;
             justify-content: center;
-            background: black;
             gap: 10px;
-            display: flex;
-            color: white;
+            background: black;
+            color: #fff;
             padding: 15px 20px;
             margin-top: 20px;
             border: 2px solid gray;
             border-radius: 12px;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all .3s ease;
             font-size: 24px;
             font-weight: bold;
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 8px rgba(255, 255, 255, .8);
         }
 
         a:hover {
             background: #474747;
-            box-shadow: 0 6px 12px rgba(244, 241, 241, 0.5);
             transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(244, 241, 241, .5);
         }
 
         img {
@@ -74,7 +65,8 @@
             border-radius: 50%;
             margin-bottom: 20px;
             border: 2px solid rgb(218, 207, 207);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(255, 255, 255, .9);
+            object-fit: cover;
         }
 
         h1 {
@@ -82,12 +74,9 @@
             margin: 10px 0 20px;
         }
 
-        a i {
-            font-size: 30px;
-        }
-
-        a span {
-            margin-right: 5px;
+        p {
+            color: white;
+            font-weight: bold;
         }
 
         hr {
@@ -95,57 +84,92 @@
             border-top: 2px solid white;
             margin: 20px 0;
         }
-
-        p {
-            color: white;
-            font-weight: bold;
-        }
     </style>
 </head>
 
 <body>
-
     <div class="carde">
         <img src="mmm.jpg" alt="photo">
         <h1>محمود المفرجي</h1>
         <p>طالب في جامعة الموصل كلية الادارة و الاقتصاد قسم نظم معلومات ادارية المرحلة الرابعة</p>
 
-        <a href="https://instagram.com/m_h.25d" target="_blank">
-            <i class="fab fa-instagram" style="color: #e1306c;"></i>
-            <span>انستغرام</span>
+        <!-- روابط: target _blank + rel لتحسين السلوك -->
+        <a href="https://instagram.com/m_h.25d" target="_blank" rel="noopener noreferrer external">
+            <i class="fab fa-instagram" style="color:#e1306c;"></i><span>انستغرام</span>
         </a>
         <hr>
-        <a href="https://facebook.com/mhmwd.almfrjy.275326" target="_blank">
-            <i class="fab fa-facebook" style="color: #1877f2;"></i>
-            <span>فيسبوك</span>
+        <a href="https://facebook.com/mhmwd.almfrjy.275326" target="_blank" rel="noopener noreferrer external">
+            <i class="fab fa-facebook" style="color:#1877f2;"></i><span>فيسبوك</span>
         </a>
         <hr>
-        <a href="https://t.me/mh24d" target="_blank">
-            <i class="fab fa-telegram" style="color: #0088cc;"></i>
-            <span>تليجرام</span>
+        <a href="https://t.me/mh24d" target="_blank" rel="noopener noreferrer external">
+            <i class="fab fa-telegram" style="color:#0088cc;"></i><span>تليجرام</span>
         </a>
         <hr>
-        <a href="https://wa.me/9647507678691" target="_blank">
-            <i class="fab fa-whatsapp" style="color: #25D366;"></i>
-            <span>واتساب</span>
+        <a href="https://wa.me/9647507678691" target="_blank" rel="noopener noreferrer external">
+            <i class="fab fa-whatsapp" style="color:#25D366;"></i><span>واتساب</span>
         </a>
     </div>
 
-    <!-- كود إعادة تحميل الصفحة عند الرجوع إليها -->
     <script>
-        window.addEventListener('pageshow', function (event) {
-            const navType = performance.getEntriesByType("navigation")[0]?.type;
+        (function () {
+            // مفتاح في sessionStorage نستخدمه لمعرفة أننا فتحنا رابط خارجي
+            const KEY = 'openedExternalLink';
 
-            if (event.persisted || navType === "back_forward") {
-                // إعادة تحميل الصفحة عند الرجوع إليها من رابط خارجي
-                location.reload();
+            // جميع الروابط الخارجية في الصفحة
+            const links = document.querySelectorAll('a[target="_blank"]');
+
+            // عند نقر الرابط: ضع علامة وأزل التركيز (blur) لتجنب بقايا التأثير
+            links.forEach(a => {
+                a.addEventListener('click', function () {
+                    try { sessionStorage.setItem(KEY, '1'); } catch (e) { }
+                    // إزالة التركيز البصري على الفور
+                    try { this.blur(); } catch (e) { }
+                    // لا نمنع الفعل الافتراضي — نريد فتح الرابط في تبويب/تطبيق خارجي
+                }, { passive: true });
+            });
+
+            // دالة تعيد تحميل الصفحة وتنظف العلامة
+            function reloadIfNeeded() {
+                try {
+                    if (sessionStorage.getItem(KEY) === '1') {
+                        sessionStorage.removeItem(KEY);
+                        // استخدم reload() لطريقة آمنة؛ بعض المتصفحات قد لا تحتاج force
+                        location.reload();
+                    }
+                } catch (e) { /* إن فشل sessionStorage، نعيد التحميل من أي حال */ try { location.reload(); } catch (e) { } }
             }
-        });
+
+            // غطاء لأكبر عدد من السيناريوهات:
+            // 1) عندما تعود الصفحة فتظهر مجدداً
+            window.addEventListener('pageshow', function (event) {
+                // إذا الصفحة كانت من "bfcache" محفوظة event.persisted=true
+                if (event.persisted) {
+                    reloadIfNeeded();
+                    return;
+                }
+                // كذلك نفحص نوع التنقل (back_forward) إن توفر
+                const navEntries = performance.getEntriesByType("navigation");
+                const navType = (navEntries && navEntries[0]) ? navEntries[0].type : null;
+                if (navType === "back_forward") {
+                    reloadIfNeeded();
+                }
+            }, false);
+
+            // 2) عندما تصبح الصفحة مرئية (cover iOS/Safari behavior)
+            document.addEventListener('visibilitychange', function () {
+                if (document.visibilityState === 'visible') {
+                    // صغير تأخير يقضي على حالات سباق الأحداث
+                    setTimeout(reloadIfNeeded, 50);
+                }
+            }, false);
+
+            // 3) كاحتياط: عند تحميل الصفحة لأول مرة ننظف أي علامة قديمة
+            try { sessionStorage.removeItem(KEY); } catch (e) { }
+        })();
     </script>
-
-
-
 </body>
 
 </html>
+
 
