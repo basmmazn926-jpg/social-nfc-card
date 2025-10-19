@@ -134,14 +134,18 @@
     <!-- كود إعادة تحميل الصفحة عند الرجوع إليها -->
     <script>
         window.addEventListener('pageshow', function (event) {
-            const navType = performance.getEntriesByType("navigation")[0].type;
+            const navType = performance.getEntriesByType("navigation")[0]?.type;
+
             if (event.persisted || navType === "back_forward") {
-                console.log("🔁 إعادة تحميل الصفحة بعد الرجوع إليها");
-                window.location.reload();
+                // إعادة تحميل الصفحة عند الرجوع إليها من رابط خارجي
+                location.reload();
             }
         });
     </script>
 
+
+
 </body>
 
 </html>
+
