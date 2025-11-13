@@ -34,5 +34,19 @@
             <i class="fab fa-whatsapp" style="color:#25D366;"></i><span>واتساب</span>
         </a>
     </div>
+
+    <script>
+        (function(){
+            const KEY='openedExternalLink';
+            const links=document.querySelectorAll('a[target="_blank"]');
+            links.forEach(a=>{a.addEventListener('click',function(){try{sessionStorage.setItem(KEY,'1')}catch(e){};try{this.blur()}catch(e){}},{passive:true})});
+            function reloadIfNeeded(){try{if(sessionStorage.getItem(KEY)==='1'){sessionStorage.removeItem(KEY);location.reload()}}catch(e){try{location.reload()}catch(e){}}}
+            window.addEventListener('pageshow',function(event){if(event.persisted){reloadIfNeeded();return}const navEntries=performance.getEntriesByType("navigation");const navType=(navEntries&&navEntries[0])?navEntries[0].type:null;if(navType==="back_forward")reloadIfNeeded()},false);
+            document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')setTimeout(reloadIfNeeded,50)},false);
+            try{sessionStorage.removeItem(KEY)}catch(e){}
+        })();
+    </script>
 </body>
 </html>
+
+
