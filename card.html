@@ -3,97 +3,21 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- محاولة لمنع التخزين المؤقت -->
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>بطاقة محمود الذكية - Mahmoud NFC Card</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            background: #333;
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        .carde {
-            width: 300px;
-            background: #000;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-            display: inline-block;
-        }
-
-        a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: black;
-            color: #fff;
-            padding: 15px 20px;
-            margin-top: 20px;
-            border: 2px solid gray;
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all .3s ease;
-            font-size: 24px;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(255, 255, 255, .8);
-        }
-
-        a:hover {
-            background: #474747;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(244, 241, 241, .5);
-        }
-
-        img {
-            width: 190px;
-            height: 190px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            border: 2px solid rgb(218, 207, 207);
-            box-shadow: 0 0 10px rgba(255, 255, 255, .9);
-            object-fit: cover;
-        }
-
-        h1 {
-            color: white;
-            margin: 10px 0 20px;
-        }
-
-        p {
-            color: white;
-            font-weight: bold;
-        }
-
-        hr {
-            border: none;
-            border-top: 2px solid white;
-            margin: 20px 0;
-        }
+        body{font-family:'Times New Roman',Times,serif;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px 0;background:linear-gradient(135deg,#1a1a1a,#333)}.carde{width:300px;background:#000;padding:20px;border-radius:15px;box-shadow:0 0 10px rgba(0,0,0,.5);display:inline-block}.carde img{width:190px;height:190px;border-radius:50%;margin-bottom:20px;border:2px solid rgb(218,207,207);box-shadow:0 0 10px rgba(255,255,255,.9);object-fit:cover}.carde h1{color:white;margin:10px 0 20px}.carde p{color:white;font-weight:bold}hr{border:none;border-top:2px solid white;margin:20px 0}a{display:flex;align-items:center;justify-content:center;gap:10px;background:black;color:#fff;padding:15px 20px;margin-top:20px;border:2px solid gray;border-radius:12px;text-decoration:none;transition:all .3s ease;font-size:24px;font-weight:bold;box-shadow:0 4px 8px rgba(255,255,255,.8)}a:hover{background:#474747;transform:translateY(-2px);box-shadow:0 6px 12px rgba(244,241,241,.5)}a:active{transform:scale(0.97)}@media(max-width:400px){.carde{width:90%;padding:15px}.carde img{width:140px;height:140px}a{font-size:18px;padding:12px}.carde p{font-size:14px}.carde h1{font-size:20px}}
     </style>
 </head>
 
 <body>
     <div class="carde">
-        <img src="mmm.jpg" alt="photo">
+        <img src="mmm.jpg?v=1" alt="photo">
         <h1>محمود المفرجي</h1>
         <p>طالب في جامعة الموصل كلية الادارة و الاقتصاد قسم نظم معلومات ادارية المرحلة الرابعة</p>
 
-        <!-- روابط: target _blank + rel لتحسين السلوك -->
         <a href="https://instagram.com/m_h.25d" target="_blank" rel="noopener noreferrer external">
             <i class="fab fa-instagram" style="color:#e1306c;"></i><span>انستغرام</span>
         </a>
@@ -110,66 +34,5 @@
             <i class="fab fa-whatsapp" style="color:#25D366;"></i><span>واتساب</span>
         </a>
     </div>
-
-    <script>
-        (function () {
-            // مفتاح في sessionStorage نستخدمه لمعرفة أننا فتحنا رابط خارجي
-            const KEY = 'openedExternalLink';
-
-            // جميع الروابط الخارجية في الصفحة
-            const links = document.querySelectorAll('a[target="_blank"]');
-
-            // عند نقر الرابط: ضع علامة وأزل التركيز (blur) لتجنب بقايا التأثير
-            links.forEach(a => {
-                a.addEventListener('click', function () {
-                    try { sessionStorage.setItem(KEY, '1'); } catch (e) { }
-                    // إزالة التركيز البصري على الفور
-                    try { this.blur(); } catch (e) { }
-                    // لا نمنع الفعل الافتراضي — نريد فتح الرابط في تبويب/تطبيق خارجي
-                }, { passive: true });
-            });
-
-            // دالة تعيد تحميل الصفحة وتنظف العلامة
-            function reloadIfNeeded() {
-                try {
-                    if (sessionStorage.getItem(KEY) === '1') {
-                        sessionStorage.removeItem(KEY);
-                        // استخدم reload() لطريقة آمنة؛ بعض المتصفحات قد لا تحتاج force
-                        location.reload();
-                    }
-                } catch (e) { /* إن فشل sessionStorage، نعيد التحميل من أي حال */ try { location.reload(); } catch (e) { } }
-            }
-
-            // غطاء لأكبر عدد من السيناريوهات:
-            // 1) عندما تعود الصفحة فتظهر مجدداً
-            window.addEventListener('pageshow', function (event) {
-                // إذا الصفحة كانت من "bfcache" محفوظة event.persisted=true
-                if (event.persisted) {
-                    reloadIfNeeded();
-                    return;
-                }
-                // كذلك نفحص نوع التنقل (back_forward) إن توفر
-                const navEntries = performance.getEntriesByType("navigation");
-                const navType = (navEntries && navEntries[0]) ? navEntries[0].type : null;
-                if (navType === "back_forward") {
-                    reloadIfNeeded();
-                }
-            }, false);
-
-            // 2) عندما تصبح الصفحة مرئية (cover iOS/Safari behavior)
-            document.addEventListener('visibilitychange', function () {
-                if (document.visibilityState === 'visible') {
-                    // صغير تأخير يقضي على حالات سباق الأحداث
-                    setTimeout(reloadIfNeeded, 50);
-                }
-            }, false);
-
-            // 3) كاحتياط: عند تحميل الصفحة لأول مرة ننظف أي علامة قديمة
-            try { sessionStorage.removeItem(KEY); } catch (e) { }
-        })();
-    </script>
 </body>
-
 </html>
-
-
