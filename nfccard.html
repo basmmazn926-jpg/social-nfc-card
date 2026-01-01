@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NFC Smart Card</title>
+    <title>NFC Card</title>
 
     <link
       rel="stylesheet"
@@ -27,7 +27,7 @@
       .card {
         width: 92%;
         max-width: 360px;
-        min-height: 100vh;
+        margin: 12px;
         padding: 22px 18px;
         border-radius: 28px;
         background: linear-gradient(180deg, #000, #1a1a1a);
@@ -36,22 +36,23 @@
         flex-direction: column;
         align-items: center;
       }
-      .card img {
+      img {
         width: 150px;
         height: 150px;
         border-radius: 50%;
         object-fit: cover;
         border: 2px solid var(--border);
-        margin-top: 10px;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.35);
       }
       h1 {
         color: #fff;
         font-size: 22px;
-        margin: 18px 0 24px;
+        margin: 16px 0 20px;
+        letter-spacing: 0.5px;
       }
       a {
         width: 100%;
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
         gap: 12px;
@@ -69,73 +70,77 @@
       a:active {
         transform: scale(0.97);
       }
+      i {
+        font-size: 28px;
+      }
+
       hr {
         width: 85%;
         border: none;
         height: 1px;
         background: linear-gradient(to right, transparent, #fff, transparent);
         opacity: 0.4;
-        margin: 8px 0;
-      }
-      i {
-        font-size: 28px;
-      }
-      .fa-instagram {
-        color: #e1306c;
-      }
-      .fa-facebook {
-        color: #1877f2;
-      }
-      .fa-whatsapp {
-        color: #25d366;
-      }
-      .fa-phone {
-        color: #00ff99;
-      }
-      .tiktok {
-        color: #fff;
-        text-shadow: 1px 1px 0 #25f4ee, -1px -1px 0 #fe2c55;
+        display: none;
       }
     </style>
   </head>
 
   <body>
     <div class="card">
-      <img id="photo" src="default.jpg" />
-      <h1 id="name">Your Name</h1>
+      <img id="avatar" src="default.jpg" />
+      <h1 id="name">Name</h1>
 
-      <a id="ig"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+      <a id="ig"><i class="fab fa-instagram"></i>Instagram</a>
       <hr />
-      <a id="fb"><i class="fab fa-facebook"></i><span>Facebook</span></a>
+      <a id="fb"><i class="fab fa-facebook"></i>Facebook</a>
       <hr />
-      <a id="tt"><i class="fab fa-tiktok tiktok"></i><span>TikTok</span></a>
+      <a id="tt"><i class="fab fa-tiktok"></i>TikTok</a>
       <hr />
-      <a id="wa"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+      <a id="wa"><i class="fab fa-whatsapp"></i>WhatsApp</a>
       <hr />
-      <a id="call"><i class="fas fa-phone"></i><span>Call Me</span></a>
+      <a id="tg"><i class="fab fa-telegram"></i>Telegram</a>
+      <hr />
+      <a id="sc"><i class="fab fa-snapchat"></i>Snapchat</a>
+      <hr />
+      <a id="em"><i class="fas fa-envelope"></i>Email</a>
+      <hr />
+      <a id="ph"><i class="fas fa-phone"></i>Call</a>
+      <hr />
+      <a id="web"><i class="fas fa-globe"></i>Website</a>
     </div>
 
     <script>
-      const p = new URLSearchParams(location.search);
+      const q=new URLSearchParams(location.search);
 
-      const set = (id, url) => {
-        const el = document.getElementById(id);
-        if (url) {
-          el.href = url;
-        } else {
-          el.style.display = "none";
-        }
+      const map={
+        ig:v=>"https://instagram.com/"+v,
+        fb:v=>"https://facebook.com/"+v,
+        tt:v=>"https://tiktok.com/@"+v,
+        wa:v=>"https://wa.me/"+v,
+        tg:v=>"https://t.me/"+v,
+        sc:v=>"https://snapchat.com/add/"+v,
+        em:v=>"mailto:"+v,
+        ph:v=>"tel:"+v,
+        web:v=>v
       };
 
-      if (p.get("name"))
-        document.getElementById("name").textContent = p.get("name");
-      if (p.get("img")) document.getElementById("photo").src = p.get("img");
+      document.getElementById("name").textContent=
+        (q.get("name")||"").replace(/-/g," ");
 
-      set("ig", p.get("ig") ? `https://instagram.com/${p.get("ig")}` : null);
-      set("fb", p.get("fb") ? `https://facebook.com/${p.get("fb")}` : null);
-      set("tt", p.get("tt") ? `https://tiktok.com/@${p.get("tt")}` : null);
-      set("wa", p.get("phone") ? `https://wa.me/${p.get("phone")}` : null);
-      set("call", p.get("phone") ? `tel:+${p.get("phone")}` : null);
+      document.getElementById("avatar").src=
+        q.get("img")||"default.jpg";
+
+      Object.keys(map).forEach(id=>{
+        const v=q.get(id);
+        if(v){
+          const a=document.getElementById(id);
+          a.href=map[id](v);
+          a.style.display="flex";
+          a.nextElementSibling?.style.display="block";
+        }
+      });
     </script>
   </body>
 </html>
+
+
