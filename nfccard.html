@@ -4,19 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NFC Card</title>
-
-    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
     <style>
       :root {
         --glass: rgba(255, 255, 255, 0.12);
         --border: rgba(255, 255, 255, 0.25);
       }
-
       body {
         margin: 0;
         min-height: 100vh;
@@ -26,7 +22,6 @@
         font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
           "Segoe UI", sans-serif;
       }
-
       .card {
         width: 92%;
         max-width: 360px;
@@ -39,7 +34,6 @@
         flex-direction: column;
         align-items: center;
       }
-
       img {
         width: 150px;
         height: 150px;
@@ -47,16 +41,15 @@
         object-fit: cover;
         border: 2px solid var(--border);
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.35);
+        margin-bottom: 16px;
       }
-
       h1 {
         color: #fff;
         font-size: 22px;
-        margin: 16px 0 20px;
+        margin: 0 0 20px;
         letter-spacing: 0.5px;
         text-align: center;
       }
-
       a {
         width: 100%;
         display: none;
@@ -73,15 +66,42 @@
         text-decoration: none;
         font-size: 18px;
         font-weight: 600;
-        transition: 0.25s;
       }
-
       a:active {
         transform: scale(0.97);
       }
-
       i {
-        font-size: 26px;
+        font-size: 28px;
+      }
+
+      /* الألوان */
+      #ig i {
+        color: #e1306c;
+      }
+      #fb i {
+        color: #1877f2;
+      }
+      #tt i {
+        color: #000000;
+        text-shadow: 1px 1px 0 #25f4ee, -1px -1px 0 #fe2c55;
+      }
+      #wa i {
+        color: #25d366;
+      }
+      #tg i {
+        color: #0088cc;
+      }
+      #sc i {
+        color: #fffc00;
+      }
+      #em i {
+        color: #ff4b4b;
+      }
+      #ph i {
+        color: #00ff99;
+      }
+      #web i {
+        color: #1e90ff;
       }
 
       hr {
@@ -92,45 +112,12 @@
         opacity: 0.4;
         display: none;
       }
-
-      /* Icon colors */
-      .fa-instagram {
-        color: #e1306c;
-      }
-      .fa-facebook {
-        color: #1877f2;
-      }
-      .fa-tiktok {
-        color: #ffffff;
-        text-shadow: 1px 1px 0 #25f4ee, -1px -1px 0 #fe2c55;
-      }
-      .fa-whatsapp {
-        color: #25d366;
-      }
-      .fa-telegram {
-        color: #2aabee;
-      }
-      .fa-snapchat {
-        color: #fffc00;
-      }
-      .fa-envelope {
-        color: #ff9800;
-      }
-      .fa-phone {
-        color: #00ff99;
-      }
-      .fa-globe {
-        color: #9c27b0;
-      }
     </style>
   </head>
-
   <body>
     <div class="card">
-      <!-- صورة افتراضية حقيقية -->
-      <img id="avatar" src="https://i.imgur.com/apIBCnI.jpeg" alt="Profile" />
-
-      <h1 id="name">Your Name</h1>
+      <img id="avatar" src="https://i.imgur.com/6r7u3pP.jpeg" />
+      <h1 id="name">Name</h1>
 
       <a id="ig"><i class="fab fa-instagram"></i>Instagram</a>
       <hr />
@@ -154,55 +141,40 @@
     <script>
       const q = new URLSearchParams(location.search);
 
-      function toTitleCase(str) {
-        return str
-          .toLowerCase()
-          .split(" ")
-          .map((word) =>
-            word
-              .split("-")
-              .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-              .join("-")
-          )
-          .join(" ");
-      }
+      // تعيين الاسم تمامًا كما هو في الرابط بدون تعديل الشرطات
+      const rawName = q.get("name") || "No-Name";
+      document.getElementById("name").textContent = rawName;
 
-      const rawName = q.get("name");
-      if (rawName) {
-        document.getElementById("name").textContent = toTitleCase(rawName);
-      }
+      // الصورة
+      document.getElementById("avatar").src = q.get("img") || "https://i.imgur.com/6r7u3pP.jpeg";
 
-      const img = q.get("img");
-      if (img) {
-        document.getElementById("avatar").src = img;
-      }
-
+      // روابط التواصل الاجتماعي
       const map = {
-        ig: (v) => "https://instagram.com/" + v,
-        fb: (v) => "https://facebook.com/" + v,
-        tt: (v) => "https://tiktok.com/@" + v,
-        wa: (v) => "https://wa.me/" + v,
-        tg: (v) => "https://t.me/" + v,
-        sc: (v) => "https://snapchat.com/add/" + v,
-        em: (v) => "mailto:" + v,
-        ph: (v) => "tel:" + v,
-        web: (v) => v,
+        ig: v => "https://instagram.com/" + v,
+        fb: v => "https://facebook.com/" + v,
+        tt: v => "https://tiktok.com/@" + v,
+        wa: v => "https://wa.me/" + v,
+        tg: v => "https://t.me/" + v,
+        sc: v => "https://snapchat.com/add/" + v,
+        em: v => "mailto:" + v,
+        ph: v => "tel:" + v,
+        web: v => v
       };
 
-      Object.keys(map).forEach((id) => {
+      Object.keys(map).forEach(id => {
         const v = q.get(id);
         if (v) {
           const a = document.getElementById(id);
           a.href = map[id](v);
           a.style.display = "flex";
-          if (a.nextElementSibling) {
-            a.nextElementSibling.style.display = "block";
-          }
+          a.nextElementSibling?.style.display = "block";
         }
       });
     </script>
   </body>
 </html>
+
+
 
 
 
