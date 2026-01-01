@@ -1,61 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NFC Card</title>
-
+    <title>Smart NFC Card</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
     <style>
       :root {
         --glass: rgba(255, 255, 255, 0.12);
         --border: rgba(255, 255, 255, 0.25);
       }
-
       body {
         margin: 0;
         min-height: 100vh;
         display: flex;
         justify-content: center;
-        background: linear-gradient(180deg, #111, #2a2a2a);
+        align-items: flex-start;
         font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
           "Segoe UI", sans-serif;
+        background: linear-gradient(180deg, #111, #2a2a2a);
       }
-
       .card {
         width: 92%;
         max-width: 360px;
         margin: 12px;
-        padding: 22px 18px;
-        border-radius: 28px;
-        background: linear-gradient(180deg, #000, #1a1a1a);
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+        padding: 28px 20px;
+        border-radius: 32px;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
         display: flex;
         flex-direction: column;
         align-items: center;
       }
-
       img {
         width: 150px;
         height: 150px;
         border-radius: 50%;
         object-fit: cover;
         border: 2px solid var(--border);
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.35);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
       }
-
       h1 {
         color: #fff;
-        font-size: 22px;
-        margin: 16px 0 20px;
+        font-size: 24px;
+        margin: 18px 0 22px;
         letter-spacing: 0.5px;
-        text-align: center;
+        font-weight: 700;
       }
-
       a {
         width: 100%;
         display: none;
@@ -72,12 +67,11 @@
         text-decoration: none;
         font-size: 18px;
         font-weight: 600;
+        transition: 0.2s;
       }
-
       a:active {
         transform: scale(0.97);
       }
-
       i {
         font-size: 28px;
       }
@@ -90,13 +84,43 @@
         opacity: 0.4;
         display: none;
       }
+
+      /* Official icon colors */
+      .fa-instagram {
+        color: #e1306c;
+      }
+      .fa-facebook {
+        color: #1877f2;
+      }
+      .fa-tiktok {
+        color: #fff;
+        text-shadow: 1px 1px 0 #25f4ee, -1px -1px 0 #fe2c55;
+      }
+      .fa-whatsapp {
+        color: #25d366;
+      }
+      .fa-telegram {
+        color: #229ed9;
+      }
+      .fa-snapchat {
+        color: #fffc00;
+      }
+      .fa-envelope {
+        color: #ea4335;
+      }
+      .fa-phone {
+        color: #00ff99;
+      }
+      .fa-globe {
+        color: #00bfff;
+      }
     </style>
   </head>
 
   <body>
     <div class="card">
-      <img id="avatar" />
-      <h1 id="name">Your Name</h1>
+      <img id="avatar" src="default.jpg" />
+      <h1 id="name">Name</h1>
 
       <a id="ig"><i class="fab fa-instagram"></i>Instagram</a>
       <hr />
@@ -120,42 +144,51 @@
     <script>
       const q = new URLSearchParams(location.search);
 
+      // Simple Arabic-to-English transliteration (basic letters only)
+      function toEnglish(name) {
+        if(!name) return "";
+        const map = {
+          'ا':'a','ب':'b','ت':'t','ث':'th','ج':'j','ح':'h','خ':'kh','د':'d','ذ':'dh','ر':'r','ز':'z',
+          'س':'s','ش':'sh','ص':'s','ض':'d','ط':'t','ظ':'z','ع':'a','غ':'gh','ف':'f','ق':'q','ك':'k',
+          'ل':'l','م':'m','ن':'n','ه':'h','و':'w','ي':'y','ء':'','ئ':'y','ؤ':'w','ى':'a'
+        };
+        return name.split('').map(c => map[c] || c).join('');
+      }
+
       const map = {
-        ig: (v) => "https://instagram.com/" + v,
-        fb: (v) => "https://facebook.com/" + v,
-        tt: (v) => "https://tiktok.com/@" + v,
-        wa: (v) => "https://wa.me/" + v,
-        tg: (v) => "https://t.me/" + v,
-        sc: (v) => "https://snapchat.com/add/" + v,
-        em: (v) => "mailto:" + v,
-        ph: (v) => "tel:" + v,
-        web: (v) => v,
+        ig:v=>"https://instagram.com/"+v,
+        fb:v=>"https://facebook.com/"+v,
+        tt:v=>"https://tiktok.com/@"+v,
+        wa:v=>"https://wa.me/"+v,
+        tg:v=>"https://t.me/"+v,
+        sc:v=>"https://snapchat.com/add/"+v,
+        em:v=>"mailto:"+v,
+        ph:v=>"tel:"+v,
+        web:v=>v
       };
 
-      // الاسم (إنجليزي + جميل)
-      document.getElementById("name").textContent = (
-        q.get("name") || "Your Name"
-      ).replace(/-/g, " ");
+      // اسم العميل
+      let rawName = q.get("name") || "";
+      document.getElementById("name").textContent = toEnglish(rawName.replace(/-/g," "));
 
-      // الصورة (افتراضية إذا لم تُرسل)
-      document.getElementById("avatar").src =
-        q.get("img") || "https://i.imgur.com/8Km9tLL.png";
+      // صورة العميل
+      document.getElementById("avatar").src = q.get("img") || "default.jpg";
 
-      // إظهار الأزرار فقط عند وجود بيانات
-      Object.keys(map).forEach((id) => {
+      // روابط التواصل
+      Object.keys(map).forEach(id=>{
         const v = q.get(id);
-        if (v) {
+        if(v){
           const a = document.getElementById(id);
           a.href = map[id](v);
           a.style.display = "flex";
-
-          const hr = a.nextElementSibling;
-          if (hr && hr.tagName === "HR") hr.style.display = "block";
+          a.nextElementSibling?.style.display="block";
         }
       });
     </script>
   </body>
 </html>
+
+
 
 
 
