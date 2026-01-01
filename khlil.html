@@ -1,59 +1,240 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <title>بطاقة خليل الذكية - Khalil NFC Card</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
     <style>
-        .tiktok-icon{
-          color:#fff;
-          text-shadow:
-            1.5px 1.5px 0 #25F4EE,
-          -1.5px -1.5px 0 #FE2C55;
+      .tiktok-icon {
+        color: #fff;
+        text-shadow: 1.5px 1.5px 0 #25f4ee, -1.5px -1.5px 0 #fe2c55;
+      }
+
+      body {
+        font-family: "Times New Roman", Times, serif;
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: flex-start; /* بداية الصفحة من الأعلى */
+        justify-content: center;
+        text-align: center;
+        padding: 8px 0; /* مسافة صغيرة جدًا أعلى وأسفل */
+        background: linear-gradient(135deg, #1a1a1a, #333);
+      }
+
+      .carde {
+        width: 300px;
+        background: #000;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        display: inline-block;
+        text-align: center; /* مركز كل المحتوى */
+      }
+
+      .carde img {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        border: 2px solid rgb(218, 207, 207);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+        object-fit: cover;
+      }
+
+      .carde h1 {
+        color: white;
+        margin: 10px 0 20px;
+      }
+
+      .carde p {
+        color: white;
+        font-weight: bold;
+      }
+
+      hr {
+        border: 2px solid #fff;
+        border-radius: 5px;
+        margin: 20px 0;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: black;
+        color: #fff;
+        padding: 15px 20px;
+        margin-top: 20px;
+        border: 2px solid gray;
+        border-radius: 12px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 24px;
+        font-weight: bold;
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.8);
+      }
+
+      a:hover {
+        background: #474747;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(244, 241, 241, 0.5);
+      }
+
+      a:active {
+        transform: scale(0.97);
+      }
+
+      @media (max-width: 400px) {
+        .carde {
+          width: 90%;
+          padding: 15px;
         }
-        body{font-family:'Times New Roman',Times,serif;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px 0;background:linear-gradient(135deg,#1a1a1a,#333)}.carde{width:300px;background:#000;padding:20px;border-radius:15px;box-shadow:0 0 10px rgba(0,0,0,.5);display:inline-block}.carde img{width:190px;height:190px;border-radius:50%;margin-bottom:20px;border:2px solid rgb(218,207,207);box-shadow:0 0 10px rgba(255,255,255,.9);object-fit:cover}.carde h1{color:white;margin:10px 0 20px}.carde p{color:white;font-weight:bold}hr{border:2px solid #fff; border-radius: 5px;margin:20px 0}a{display:flex;align-items:center;justify-content:center;gap:10px;background:black;color:#fff;padding:15px 20px;margin-top:20px;border:2px solid gray;border-radius:12px;text-decoration:none;transition:all .3s ease;font-size:24px;font-weight:bold;box-shadow:0 4px 8px rgba(255,255,255,.8)}a:hover{background:#474747;transform:translateY(-2px);box-shadow:0 6px 12px rgba(244,241,241,.5)}a:active{transform:scale(0.97)}@media(max-width:400px){.carde{width:90%;padding:15px}.carde img{width:140px;height:140px}a{font-size:18px;padding:12px}.carde p{font-size:14px}.carde h1{font-size:20px}}
+        .carde img {
+          width: 140px;
+          height: 140px;
+        }
+        a {
+          font-size: 18px;
+          padding: 12px;
+        }
+        .carde p {
+          font-size: 14px;
+        }
+        .carde h1 {
+          font-size: 20px;
+        }
+      }
+
+      /* الهواتف: تصحيح المحاذاة والفراغات */
+      @media (max-width: 600px) {
+        .carde {
+          min-height: calc(100vh - 16px); /* تقريبًا ملء الشاشة */
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start; /* لا تملأ الفراغ رأسيًا */
+          align-items: center; /* مركز كل العناصر أفقياً */
+          padding-top: 10px; /* مسافة صغيرة من الأعلى */
+        }
+
+        .carde hr {
+          margin: 15px 0; /* تقليل المسافة بين الخط والزر */
+        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="carde">
-        <img src="khlel.jpg?v=1" alt="photo">
-        <h1>خليل المفرجي</h1>
-        <p>يعمل في البناء متزوج لديه 3 اولاد</p>
+      <img src="khlel.jpg?v=1" alt="photo" />
+      <h1>خليل المفرجي</h1>
 
-        <a href="https://instagram.com/bwws.lmslwy" target="_blank" rel="noopener noreferrer external">
-            <i class="fab fa-instagram" style="color:#e1306c;"></i><span>انستغرام</span>
-        </a>
-        <hr>
-        <a href="https://facebook.com/almfrjy.abwaws" target="_blank" rel="noopener noreferrer external">
-            <i class="fab fa-facebook" style="color:#1877f2;"></i><span>فيسبوك</span>
-        </a>
-        <hr>
-        <a href="https://tiktok.com/@almafrajiabuaws" target="_blank" rel="noopener noreferrer external">
-            <i class="fab fa-tiktok  tiktok-icon"></i><span>تيك توك</span>
-        </a>
-        <hr>
-        <a href="https://wa.me/9647517059542" target="_blank" rel="noopener noreferrer external">
-            <i class="fab fa-whatsapp" style="color:#25D366;"></i><span>واتساب</span>
-        </a>
+      <a
+        href="https://instagram.com/bwws.lmslwy"
+        target="_blank"
+        rel="noopener noreferrer external"
+      >
+        <i class="fab fa-instagram" style="color: #e1306c"></i
+        ><span>انستغرام</span>
+      </a>
+      <hr />
+      <a
+        href="https://facebook.com/almfrjy.abwaws"
+        target="_blank"
+        rel="noopener noreferrer external"
+      >
+        <i class="fab fa-facebook" style="color: #1877f2"></i
+        ><span>فيسبوك</span>
+      </a>
+      <hr />
+      <a
+        href="https://tiktok.com/@almafrajiabuaws"
+        target="_blank"
+        rel="noopener noreferrer external"
+      >
+        <i class="fab fa-tiktok tiktok-icon"></i><span>تيك توك</span>
+      </a>
+      <hr />
+      <a
+        href="https://wa.me/9647517059542"
+        target="_blank"
+        rel="noopener noreferrer external"
+      >
+        <i class="fab fa-whatsapp" style="color: #25d366"></i
+        ><span>واتساب</span>
+      </a>
     </div>
 
     <script>
-        (function(){
-            const KEY='openedExternalLink';
-            const links=document.querySelectorAll('a[target="_blank"]');
-            links.forEach(a=>{a.addEventListener('click',function(){try{sessionStorage.setItem(KEY,'1')}catch(e){};try{this.blur()}catch(e){}},{passive:true})});
-            function reloadIfNeeded(){try{if(sessionStorage.getItem(KEY)==='1'){sessionStorage.removeItem(KEY);location.reload()}}catch(e){try{location.reload()}catch(e){}}}
-            window.addEventListener('pageshow',function(event){if(event.persisted){reloadIfNeeded();return}const navEntries=performance.getEntriesByType("navigation");const navType=(navEntries&&navEntries[0])?navEntries[0].type:null;if(navType==="back_forward")reloadIfNeeded()},false);
-            document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')setTimeout(reloadIfNeeded,50)},false);
-            try{sessionStorage.removeItem(KEY)}catch(e){}
-        })();
+      (function () {
+        const KEY = "openedExternalLink";
+        const links = document.querySelectorAll('a[target="_blank"]');
+        links.forEach((a) => {
+          a.addEventListener(
+            "click",
+            function () {
+              try {
+                sessionStorage.setItem(KEY, "1");
+              } catch (e) {}
+              try {
+                this.blur();
+              } catch (e) {}
+            },
+            { passive: true }
+          );
+        });
+        function reloadIfNeeded() {
+          try {
+            if (sessionStorage.getItem(KEY) === "1") {
+              sessionStorage.removeItem(KEY);
+              location.reload();
+            }
+          } catch (e) {
+            try {
+              location.reload();
+            } catch (e) {}
+          }
+        }
+        window.addEventListener(
+          "pageshow",
+          function (event) {
+            if (event.persisted) {
+              reloadIfNeeded();
+              return;
+            }
+            const navEntries = performance.getEntriesByType("navigation");
+            const navType =
+              navEntries && navEntries[0] ? navEntries[0].type : null;
+            if (navType === "back_forward") reloadIfNeeded();
+          },
+          false
+        );
+        document.addEventListener(
+          "visibilitychange",
+          function () {
+            if (document.visibilityState === "visible")
+              setTimeout(reloadIfNeeded, 50);
+          },
+          false
+        );
+        try {
+          sessionStorage.removeItem(KEY);
+        } catch (e) {}
+      })();
     </script>
-</body>
+  </body>
 </html>
+
+
 
 
 
