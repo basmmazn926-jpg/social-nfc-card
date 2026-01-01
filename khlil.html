@@ -1,161 +1,109 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<title>بطاقة خليل الذكية</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <title>بطاقة خليل الذكية</title>
 
-<style>
-/* ===== إعداد الصفحة (مهم للموبايل) ===== */
-body{
-  font-family:'Times New Roman',Times,serif;
-  margin:0;
-  height:100svh;              /* يمنع الفراغ السفلي */
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  padding-top:12px;           /* مسافة علوية صغيرة فقط */
-  background:linear-gradient(135deg,#1a1a1a,#333);
-  text-align:center;
-}
+    <style>
+      body {
+        margin: 0;
+        background: linear-gradient(135deg, #1a1a1a, #333);
+        font-family: "Times New Roman", Times, serif;
+        text-align: center;
 
+        /* أهم تعديل */
+        display: flex;
+        justify-content: center;
+        padding: 6px; /* مسافة صغيرة جدًا فقط */
+      }
 
-/* ===== البطاقة ===== */
-.card{
-  width:320px;
-  max-width:92%;
-  background:#000;
-  padding:16px;
-  border-radius:16px;
-  box-shadow:
-    0 6px 16px rgba(0,0,0,.6),
-    inset 0 0 0 1px rgba(255,255,255,.06);
-}
+      .card {
+        width: 300px;
+        background: #000;
+        padding: 12px;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
 
-/* ===== الصورة ===== */
-.card img{
-  width:170px;
-  height:170px;
-  border-radius:50%;
-  border:2px solid #ddd;
-  box-shadow:0 0 10px rgba(255,255,255,.8);
-  object-fit:cover;
-  margin-bottom:15px;
-}
+      .card img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 6px 0;
+        border: 2px solid #dad0d0;
+        object-fit: cover;
+      }
 
-/* ===== الاسم ===== */
-.card h1{
-  color:#fff;
-  margin:10px 0 20px;
-}
+      .card h1 {
+        color: #fff;
+        margin: 6px 0 8px;
+        font-size: 20px;
+      }
 
-/* ===== الخط ===== */
-hr{
-  border:none;
-  border-top:2px solid #ccc;
-  margin:18px 0;
-}
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: #000;
+        color: #fff;
+        padding: 10px;
+        margin-top: 6px;
+        border: 2px solid gray;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+      }
 
-/* ===== الأزرار ===== */
-a{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  background:#000;
-  color:#fff;
-  padding:14px;
-  border:2px solid #777;
-  border-radius:14px;
-  text-decoration:none;
-  font-size:22px;
-  font-weight:bold;
-  box-shadow:0 4px 8px rgba(255,255,255,.6);
-  transition:all .25s ease;
-}
+      hr {
+        border: none;
+        border-top: 1px solid #555;
+        margin: 6px 0;
+      }
 
-a:hover{
-  background:#2f2f2f;
-  transform:translateY(-2px);
-}
+      .tiktok-icon {
+        color: #fff;
+        text-shadow: 1.5px 1.5px 0 #25f4ee, -1.5px -1.5px 0 #fe2c55;
+      }
 
-a:active{
-  transform:scale(.97);
-}
+      /* موبايل */
+      @media (max-width: 400px) {
+        .card {
+          width: 95%;
+        }
+      }
+    </style>
+  </head>
 
-/* ===== الأيقونات ===== */
-i{
-  font-size:28px;
-}
+  <body>
+    <div class="card">
+      <img src="khlel.jpg" alt="#" />
+      <h1>خليل المفرجي</h1>
 
-/* تيك توك */
-.tiktok-icon{
-  color:#fff;
-  text-shadow:
-    2px 2px 0 #25F4EE,
-   -2px -2px 0 #FE2C55;
-}
-
-/* ===== تحسين خاص للموبايل ===== */
-@media (max-width:400px){
-  .card{
-    width:100%;
-    margin:0 12px;
-  }
-
-  .card img{
-    width:140px;
-    height:140px;
-  }
-
-  a{
-    font-size:18px;
-    padding:12px;
-  }
-
-  h1{
-    font-size:20px;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<div class="card">
-  <img src="khlel.jpg" alt="الصورة الشخصية">
-  <h1>خليل المفرجي</h1>
-
-  <a href="https://instagram.com/bwws.lmslwy" target="_blank">
-    <i class="fab fa-instagram" style="color:#E1306C;"></i>
-    <span>انستغرام</span>
-  </a>
-
-  <hr>
-
-  <a href="https://facebook.com/almfrjy.abw.aws" target="_blank">
-    <i class="fab fa-facebook" style="color:#1877F2;"></i>
-    <span>فيسبوك</span>
-  </a>
-
-  <hr>
-
-  <a href="https://wa.me/9647517059542" target="_blank">
-    <i class="fab fa-whatsapp" style="color:#25D366;"></i>
-    <span>واتساب</span>
-  </a>
-
-  <hr>
-
-  <a href="https://tiktok.com/@almafrajiabuaws" target="_blank">
-    <i class="fab fa-tiktok tiktok-icon"></i>
-    <span>تيك توك</span>
-  </a>
-</div>
-
-</body>
+      <a href="https://instagram.com/bwws.lmslwy" target="_blank"
+        ><i class="fab fa-instagram" style="color: #e1306c"></i><span>انستغرام</span></a
+      >
+      <hr />
+      <a href="https://facebook.com/almfrjy.abw.aws" target="_blank"
+        ><i class="fab fa-facebook" style="color: #1877f2"></i><span>فيسبوك</span></a
+      >
+      <hr />
+      <a href="https://wa.me/964751059542" target="_blank"
+        ><i class="fab fa-whatsapp" style="color: #25d366"></i><span>واتساب</span></a
+      >
+      <hr />
+      <a href="https://tiktok.com/@almafrajiabuaws" target="_blank"><i class="fab fa-tiktok tiktok-icon"></i><span>تيك توك</span></a>
+    </div>
+  </body>
 </html>
+
+
 
 
 
