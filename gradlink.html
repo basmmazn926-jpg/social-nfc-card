@@ -4,65 +4,119 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>مولّد روابط NFC</title>
-
     <style>
       body {
         font-family: sans-serif;
-        background: #f2f2f2;
         padding: 20px;
+        background: #111;
+        color: #fff;
       }
       h2 {
         text-align: center;
       }
-      input,
-      textarea,
-      button {
+      input {
         width: 100%;
         padding: 10px;
         margin: 6px 0;
-        font-size: 16px;
-        box-sizing: border-box;
+        border-radius: 6px;
+        border: none;
       }
       button {
-        background: #000;
-        color: #fff;
+        padding: 12px 20px;
         border: none;
         border-radius: 8px;
+        background: #0b84ff;
+        color: #fff;
+        font-weight: bold;
         cursor: pointer;
+        width: 100%;
+        margin-top: 10px;
       }
       textarea {
+        width: 100%;
         height: 120px;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 6px;
+        border: none;
+      }
+      small {
+        color: #aaa;
       }
     </style>
   </head>
-
   <body>
     <h2>مولّد روابط NFC</h2>
 
-    <input id="name" placeholder="Name (English)" />
-    <input id="img" placeholder="Image URL" />
-    <input id="ig" placeholder="Instagram" />
-    <input id="fb" placeholder="Facebook" />
-    <input id="tt" placeholder="TikTok" />
-    <input id="wa" placeholder="WhatsApp" />
-    <input id="tg" placeholder="Telegram" />
-    <input id="sc" placeholder="Snapchat" />
-    <input id="em" placeholder="Email" />
-    <input id="ph" placeholder="Phone" />
-    <input id="web" placeholder="Website" />
+    <input id="name" placeholder="Name (English)" /><small
+      >اسم العميل بالإنجليزي، أو عربي سيتم تحويله</small
+    ><br />
+    <input id="img" placeholder="Image URL" /><small
+      >رابط صورة العميل (اختياري)</small
+    ><br />
+    <input id="ig" placeholder="Instagram" /><br />
+    <input id="fb" placeholder="Facebook" /><br />
+    <input id="tt" placeholder="TikTok" /><br />
+    <input id="wa" placeholder="WhatsApp" /><br />
+    <input id="tg" placeholder="Telegram" /><br />
+    <input id="sc" placeholder="Snapchat" /><br />
+    <input id="em" placeholder="Email" /><br />
+    <input id="ph" placeholder="Phone" /><br />
+    <input id="web" placeholder="Website" /><br />
 
     <button onclick="gen()">إنشاء الرابط</button>
-
-    <textarea id="out" placeholder="سيظهر الرابط هنا"></textarea>
+    <textarea id="out" readonly></textarea>
 
     <script>
+      function toEnglish(name) {
+        if (!name) return "";
+        const map = {
+          ا: "a",
+          ب: "b",
+          ت: "t",
+          ث: "th",
+          ج: "j",
+          ح: "h",
+          خ: "kh",
+          د: "d",
+          ذ: "dh",
+          ر: "r",
+          ز: "z",
+          س: "s",
+          ش: "sh",
+          ص: "s",
+          ض: "d",
+          ط: "t",
+          ظ: "z",
+          ع: "a",
+          غ: "gh",
+          ف: "f",
+          ق: "q",
+          ك: "k",
+          ل: "l",
+          م: "m",
+          ن: "n",
+          ه: "h",
+          و: "w",
+          ي: "y",
+          ء: "",
+          ئ: "y",
+          ؤ: "w",
+          ى: "a",
+        };
+        return name
+          .split("")
+          .map((c) => map[c] || c)
+          .join("");
+      }
+
       function gen() {
         const base =
           "https://basmmazn926-jpg.github.io/social-nfc-card/nfccard.html";
-
         const p = new URLSearchParams();
 
-        [
+        // قائمة الحقول
+        const fields = [
           "name",
           "img",
           "ig",
@@ -74,10 +128,13 @@
           "em",
           "ph",
           "web",
-        ].forEach((id) => {
+        ];
+
+        fields.forEach((id) => {
           const v = document.getElementById(id).value.trim();
           if (v) {
-            p.append(id, id === "name" ? v.replace(/\s+/g, "-") : v);
+            if (id === "name") p.append(id, toEnglish(v).replace(/\s+/g, "-"));
+            else p.append(id, v);
           }
         });
 
@@ -86,6 +143,8 @@
     </script>
   </body>
 </html>
+
+
 
 
 
