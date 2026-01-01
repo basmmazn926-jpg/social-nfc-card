@@ -6,238 +6,148 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
-    <title>بطاقة خليل الذكية - Khalil NFC Card</title>
+    <title>Khalil NFC Card</title>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
     <style>
-      .tiktok-icon {
-        color: #fff;
-        text-shadow: 1.5px 1.5px 0 #25f4ee, -1.5px -1.5px 0 #fe2c55;
+      :root {
+        --glass: rgba(255, 255, 255, 0.12);
+        --border: rgba(255, 255, 255, 0.25);
       }
 
       body {
-        font-family: "Times New Roman", Times, serif;
         margin: 0;
         min-height: 100vh;
         display: flex;
-        align-items: flex-start;
         justify-content: center;
-        text-align: center;
-        padding: 8px 0;
-        background: linear-gradient(135deg, #1a1a1a, #333);
+        align-items: flex-start;
+        background: linear-gradient(180deg, #111, #2a2a2a);
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+          "Segoe UI", sans-serif;
       }
 
       .carde {
-        width: 300px;
-        background: #000;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        display: inline-block;
-        text-align: center;
+        width: 92%;
+        max-width: 360px;
+        min-height: calc(100vh - 20px);
+        margin: 10px;
+        padding: 22px 18px;
+        border-radius: 28px;
+        background: linear-gradient(180deg, #000, #1a1a1a);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       .carde img {
-        width: 190px;
-        height: 190px;
+        width: 150px;
+        height: 150px;
         border-radius: 50%;
-        margin-bottom: 20px;
-        border: 2px solid rgb(218, 207, 207);
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
         object-fit: cover;
+        border: 2px solid var(--border);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        margin-top: 10px;
       }
 
       .carde h1 {
-        color: white;
-        margin: 10px 0 20px;
-      }
-
-      hr {
-        border: 2px solid #fff;
-        border-radius: 5px;
-        margin: 20px 0;
+        color: #fff;
+        font-size: 22px;
+        margin: 16px 0 22px;
+        letter-spacing: 0.5px;
       }
 
       a {
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
-        background: black;
+        gap: 12px;
+        padding: 14px;
+        margin: 6px 0;
+        border-radius: 18px;
+        background: var(--glass);
+        border: 1px solid var(--border);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         color: #fff;
-        padding: 15px 20px;
-        margin-top: 20px;
-        border: 2px solid gray;
-        border-radius: 12px;
         text-decoration: none;
-        transition: all 0.3s ease;
-        font-size: 24px;
-        font-weight: bold;
-        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.8);
-      }
-
-      a:hover {
-        background: #474747;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(244, 241, 241, 0.5);
+        font-size: 18px;
+        font-weight: 600;
+        transition: 0.25s;
       }
 
       a:active {
         transform: scale(0.97);
       }
 
-      @media (max-width: 400px) {
-        .carde {
-          width: 90%;
-          padding: 15px;
-        }
-        .carde img {
-          width: 140px;
-          height: 140px;
-        }
-        a {
-          font-size: 18px;
-          padding: 12px;
-        }
-        .carde h1 {
-          font-size: 20px;
-        }
+      hr {
+        width: 85%;
+        border: none;
+        height: 1px;
+        background: linear-gradient(to right, transparent, #fff, transparent);
+        opacity: 0.4;
+        margin: 8px 0;
       }
 
-      /* الهواتف: عرض العناصر بعرض البطاقة وتحريك الخط للوسط بين الزرين */
-      @media (max-width: 600px) {
-        .carde {
-          min-height: calc(100vh - 16px);
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          align-items: center;
-          padding-top: 10px;
-        }
-
-        .carde hr {
-          width: 95%;
-          max-width: inherit;
-          /* margin-top: 30px; الخط في وسط المسافة بين الزرين */
-        }
-
-        .carde a {
-          width: 90%;
-          max-width: inherit;
-          margin: 0 0; /* توازن المسافة بين الزر والخط */
-        }
+      /* أيقونات */
+      .fa-instagram {
+        color: #e1306c;
+      }
+      .fa-facebook {
+        color: #1877f2;
+      }
+      .fa-whatsapp {
+        color: #25d366;
+      }
+      .fa-phone {
+        color: #00ff99;
+      }
+      .tiktok-icon {
+        color: #fff;
+        text-shadow: 1px 1px 0 #25f4ee, -1px -1px 0 #fe2c55;
       }
     </style>
   </head>
 
   <body>
     <div class="carde">
-      <img src="khlel.jpg?v=1" alt="photo" />
+      <img src="khlel.jpg" alt="photo" />
       <h1>خليل المفرجي</h1>
 
-      <a
-        href="https://instagram.com/bwws.lmslwy"
-        target="_blank"
-        rel="noopener noreferrer external"
-      >
-        <i class="fab fa-instagram" style="color: #e1306c"></i
-        ><span>انستغرام</span>
+      <a href="https://instagram.com/bwws.lmslwy">
+        <i class="fab fa-instagram"></i><span>انستغرام</span>
       </a>
+
       <hr />
-      <a
-        href="https://facebook.com/almfrjy.abwaws"
-        target="_blank"
-        rel="noopener noreferrer external"
-      >
-        <i class="fab fa-facebook" style="color: #1877f2"></i
-        ><span>فيسبوك</span>
+
+      <a href="https://facebook.com/almfrjy.abwaws">
+        <i class="fab fa-facebook"></i><span>فيسبوك</span>
       </a>
+
       <hr />
-      <a
-        href="https://tiktok.com/@almafrajiabuaws"
-        target="_blank"
-        rel="noopener noreferrer external"
-      >
+
+      <a href="https://tiktok.com/@almafrajiabuaws">
         <i class="fab fa-tiktok tiktok-icon"></i><span>تيك توك</span>
       </a>
+
       <hr />
-      <a
-        href="https://wa.me/9647517059542"
-        target="_blank"
-        rel="noopener noreferrer external"
-      >
-        <i class="fab fa-whatsapp" style="color: #25d366"></i
-        ><span>واتساب</span>
+
+      <a href="https://wa.me/9647517059542">
+        <i class="fab fa-whatsapp"></i><span>واتساب</span>
       </a>
+
       <hr />
-      <a
-        href="tel:+9647517059542"
-        target="_blank"
-        rel="noopener noreferrer external"
-      >
-        <i class="fas fa-phone" style="color: #00ff00"></i><span>اتصل بي</span>
+
+      <a href="tel:+9647517059542">
+        <i class="fas fa-phone"></i><span>اتصل بي</span>
       </a>
     </div>
-
-    <script>
-      (function () {
-        const KEY = "openedExternalLink";
-        const links = document.querySelectorAll('a[target="_blank"]');
-        links.forEach((a) => {
-          a.addEventListener(
-            "click",
-            function () {
-              try {
-                sessionStorage.setItem(KEY, "1");
-              } catch (e) {}
-              try {
-                this.blur();
-              } catch (e) {}
-            },
-            { passive: true }
-          );
-        });
-        function reloadIfNeeded() {
-          try {
-            if (sessionStorage.getItem(KEY) === "1") {
-              sessionStorage.removeItem(KEY);
-              location.reload();
-            }
-          } catch (e) {
-            try {
-              location.reload();
-            } catch (e) {}
-          }
-        }
-        window.addEventListener(
-          "pageshow",
-          function (event) {
-            if (event.persisted) {
-              reloadIfNeeded();
-              return;
-            }
-            const navEntries = performance.getEntriesByType("navigation");
-            const navType =
-              navEntries && navEntries[0] ? navEntries[0].type : null;
-            if (navType === "back_forward") reloadIfNeeded();
-          },
-          false
-        );
-        document.addEventListener(
-          "visibilitychange",
-          function () {
-            if (document.visibilityState === "visible")
-              setTimeout(reloadIfNeeded, 50);
-          },
-          false
-        );
-        try {
-          sessionStorage.removeItem(KEY);
-        } catch (e) {}
-      })();
-    </script>
   </body>
 </html>
+
+
