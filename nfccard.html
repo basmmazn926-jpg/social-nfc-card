@@ -4,28 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NFC Card</title>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+
     <style>
-      :root {
-        --glass: rgba(255, 255, 255, 0.12);
-        --border: rgba(255, 255, 255, 0.25);
-      }
       body {
         margin: 0;
         min-height: 100vh;
         display: flex;
         justify-content: center;
+        align-items: flex-start;
         background: linear-gradient(180deg, #111, #2a2a2a);
-        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-          "Segoe UI", sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
+
       .card {
         width: 92%;
         max-width: 360px;
-        margin: 12px;
+        margin: 16px;
         padding: 22px 18px;
         border-radius: 28px;
         background: linear-gradient(180deg, #000, #1a1a1a);
@@ -34,21 +33,22 @@
         flex-direction: column;
         align-items: center;
       }
+
       img {
         width: 150px;
         height: 150px;
         border-radius: 50%;
         object-fit: cover;
-        border: 2px solid var(--border);
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.35);
         margin-top: 10px;
+        border: 2px solid rgba(255, 255, 255, 0.25);
       }
+
       h1 {
         color: #fff;
         font-size: 22px;
         margin: 16px 0 20px;
-        letter-spacing: 0.5px;
       }
+
       a {
         width: 100%;
         display: none;
@@ -58,19 +58,16 @@
         padding: 14px;
         margin: 6px 0;
         border-radius: 18px;
-        background: var(--glass);
-        border: 1px solid var(--border);
-        backdrop-filter: blur(12px);
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.25);
         color: #fff;
         text-decoration: none;
         font-size: 18px;
         font-weight: 600;
       }
-      a:active {
-        transform: scale(0.97);
-      }
+
       i {
-        font-size: 28px;
+        font-size: 26px;
       }
 
       hr {
@@ -78,11 +75,11 @@
         border: none;
         height: 1px;
         background: linear-gradient(to right, transparent, #fff, transparent);
-        opacity: 0.4;
+        opacity: 0.3;
         display: none;
-        margin: 0;
       }
-      /* ألوان أيقونات التواصل */
+
+      /* ألوان */
       #ig i {
         color: #e1306c;
       }
@@ -90,8 +87,7 @@
         color: #1877f2;
       }
       #tt i {
-        color: #000;
-        text-shadow: 1px 1px 0 #25f4ee, -1px -1px 0 #fe2c55;
+        text-shadow: 1px 1px #25f4ee, -1px -1px #fe2c55;
       }
       #wa i {
         color: #25d366;
@@ -99,24 +95,13 @@
       #tg i {
         color: #0088cc;
       }
-      #sc i {
-        color: #fffc00;
-      }
-      #em i {
-        color: #ff4b4b;
-      }
-      #ph i {
-        color: #00ff99;
-      }
-      #web i {
-        color: #ff7a00;
-      }
     </style>
   </head>
+
   <body>
     <div class="card">
-      <img id="avatar" src="default.jpg" />
-      <h1 id="name">Name</h1>
+      <img id="avatar" />
+      <h1 id="name">User</h1>
 
       <a id="ig"><i class="fab fa-instagram"></i>Instagram</a>
       <hr />
@@ -127,60 +112,43 @@
       <a id="wa"><i class="fab fa-whatsapp"></i>WhatsApp</a>
       <hr />
       <a id="tg"><i class="fab fa-telegram"></i>Telegram</a>
-      <hr />
-      <a id="sc"><i class="fab fa-snapchat"></i>Snapchat</a>
-      <hr />
-      <a id="em"><i class="fas fa-envelope"></i>Email</a>
-      <hr />
-      <a id="ph"><i class="fas fa-phone"></i>Call</a>
-      <hr />
-      <a id="web"><i class="fas fa-globe"></i>Website</a>
     </div>
 
     <script>
-      const q = new URLSearchParams(location.search);
+      document.addEventListener("DOMContentLoaded", () => {
+        const q = new URLSearchParams(window.location.search);
 
-      // تحويل الاسم العربي للإنجليزي
-      function toEnglish(name){
-        if(!name) return "";
-        const map = {
-          'ا':'a','ب':'b','ت':'t','ث':'th','ج':'j','ح':'h','خ':'kh','د':'d','ذ':'dh','ر':'r','ز':'z',
-          'س':'s','ش':'sh','ص':'s','ض':'d','ط':'t','ظ':'z','ع':'a','غ':'gh','ف':'f','ق':'q','ك':'k',
-          'ل':'l','م':'m','ن':'n','ه':'h','و':'w','ي':'y','ء':'','ئ':'y','ؤ':'w','ى':'a'
+        // اسم أنيق
+        const rawName = q.get("name") || "Anonymous User";
+        document.getElementById("name").textContent = rawName.replace(
+          /-/g,
+          " "
+        );
+
+        // صورة افتراضية مضمونة
+        document.getElementById("avatar").src =
+          q.get("img") || "https://i.imgur.com/2C7U6qK.png";
+
+        const links = {
+          ig: (v) => "https://instagram.com/" + v,
+          fb: (v) => "https://facebook.com/" + v,
+          tt: (v) => "https://tiktok.com/@" + v,
+          wa: (v) => "https://wa.me/" + v,
+          tg: (v) => "https://t.me/" + v,
         };
-        return name.split('').map(c => map[c] || c).join('');
-      }
 
-      // اسم العميل
-      document.getElementById("name").textContent =
-        toEnglish(q.get("name")||"Anonymous").replace(/-/g," ");
-
-      // صورة العميل
-      document.getElementById("avatar").src = q.get("img") || "https://i.imgur.com/2C7U6qK.png";
-
-      // الخريطة لكل زر
-      const map = {
-        ig:v=>"https://instagram.com/"+v,
-        fb:v=>"https://facebook.com/"+v,
-        tt:v=>"https://tiktok.com/@"+v,
-        wa:v=>"https://wa.me/"+v,
-        tg:v=>"https://t.me/"+v,
-        sc:v=>"https://snapchat.com/add/"+v,
-        em:v=>"mailto:"+v,
-        ph:v=>"tel:"+v,
-        web:v=>v
-      };
-
-      // تطبيق الروابط والأزرار
-      Object.keys(map).forEach(id=>{
-        const val = q.get(id);
-        if(val){
-          const a = document.getElementById(id);
-          a.href = map[id](val);
-          a.style.display = "flex";
-          a.nextElementSibling?.style.display = "block";
-        }
+        Object.keys(links).forEach((id) => {
+          const v = q.get(id);
+          if (v) {
+            const a = document.getElementById(id);
+            a.href = links[id](v);
+            a.style.display = "flex";
+            a.nextElementSibling.style.display = "block";
+          }
+        });
       });
     </script>
   </body>
 </html>
+
+
