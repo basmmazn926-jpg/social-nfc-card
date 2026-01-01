@@ -1,50 +1,93 @@
 <!DOCTYPE html>
-<html lang="ar">
-  <meta charset="UTF-8" />
-  <h2>مولّد روابط NFC</h2>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مولّد روابط NFC</title>
 
-  <input id="name" placeholder="Name (English)" /><br />
-  <input id="img" placeholder="Image URL" /><br />
-  <input id="ig" placeholder="Instagram" /><br />
-  <input id="fb" placeholder="Facebook" /><br />
-  <input id="tt" placeholder="TikTok" /><br />
-  <input id="wa" placeholder="WhatsApp" /><br />
-  <input id="tg" placeholder="Telegram" /><br />
-  <input id="sc" placeholder="Snapchat" /><br />
-  <input id="em" placeholder="Email" /><br />
-  <input id="ph" placeholder="Phone" /><br />
-  <input id="web" placeholder="Website" /><br /><br />
+    <style>
+      body {
+        font-family: sans-serif;
+        background: #f2f2f2;
+        padding: 20px;
+      }
+      h2 {
+        text-align: center;
+      }
+      input,
+      textarea,
+      button {
+        width: 100%;
+        padding: 10px;
+        margin: 6px 0;
+        font-size: 16px;
+        box-sizing: border-box;
+      }
+      button {
+        background: #000;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      textarea {
+        height: 120px;
+      }
+    </style>
+  </head>
 
-  <button onclick="gen()">إنشاء الرابط</button>
-  <textarea id="out" style="width: 100%; height: 100px"></textarea>
+  <body>
+    <h2>مولّد روابط NFC</h2>
 
-  <script>
-    function gen() {
-      const base =
-        "https://basmmazn926-jpg.github.io/social-nfc-card/nfccard.html";
-      const p = new URLSearchParams();
+    <input id="name" placeholder="Name (English)" />
+    <input id="img" placeholder="Image URL" />
+    <input id="ig" placeholder="Instagram" />
+    <input id="fb" placeholder="Facebook" />
+    <input id="tt" placeholder="TikTok" />
+    <input id="wa" placeholder="WhatsApp" />
+    <input id="tg" placeholder="Telegram" />
+    <input id="sc" placeholder="Snapchat" />
+    <input id="em" placeholder="Email" />
+    <input id="ph" placeholder="Phone" />
+    <input id="web" placeholder="Website" />
 
-      [
-        "name",
-        "img",
-        "ig",
-        "fb",
-        "tt",
-        "wa",
-        "tg",
-        "sc",
-        "em",
-        "ph",
-        "web",
-      ].forEach((id) => {
-        const v = document.getElementById(id).value.trim();
-        if (v) p.append(id, id == "name" ? v.replace(/\s+/g, "-") : v);
-      });
+    <button onclick="gen()">إنشاء الرابط</button>
 
-      out.value = base + "?" + p.toString();
-    }
-  </script>
+    <textarea id="out" placeholder="سيظهر الرابط هنا"></textarea>
+
+    <script>
+      function gen() {
+        const base =
+          "https://basmmazn926-jpg.github.io/social-nfc-card/nfccard.html";
+
+        const p = new URLSearchParams();
+
+        [
+          "name",
+          "img",
+          "ig",
+          "fb",
+          "tt",
+          "wa",
+          "tg",
+          "sc",
+          "em",
+          "ph",
+          "web",
+        ].forEach((id) => {
+          const v = document.getElementById(id).value.trim();
+          if (v) {
+            p.append(id, id === "name" ? v.replace(/\s+/g, "-") : v);
+          }
+        });
+
+        document.getElementById("out").value = base + "?" + p.toString();
+      }
+    </script>
+  </body>
 </html>
+
+
 
 
 
