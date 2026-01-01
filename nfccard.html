@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NFC Smart Card</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --glass: rgba(255, 255, 255, 0.12);
+        --border: rgba(255, 255, 255, 0.25);
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        background: linear-gradient(180deg, #111, #2a2a2a);
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+          "Segoe UI", sans-serif;
+      }
+      .card {
+        width: 92%;
+        max-width: 360px;
+        min-height: 100vh;
+        padding: 22px 18px;
+        border-radius: 28px;
+        background: linear-gradient(180deg, #000, #1a1a1a);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .card img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--border);
+        margin-top: 10px;
+      }
+      h1 {
+        color: #fff;
+        font-size: 22px;
+        margin: 18px 0 24px;
+      }
+      a {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 14px;
+        margin: 6px 0;
+        border-radius: 18px;
+        background: var(--glass);
+        border: 1px solid var(--border);
+        backdrop-filter: blur(12px);
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 600;
+      }
+      a:active {
+        transform: scale(0.97);
+      }
+      hr {
+        width: 85%;
+        border: none;
+        height: 1px;
+        background: linear-gradient(to right, transparent, #fff, transparent);
+        opacity: 0.4;
+        margin: 8px 0;
+      }
+      i {
+        font-size: 28px;
+      }
+      .fa-instagram {
+        color: #e1306c;
+      }
+      .fa-facebook {
+        color: #1877f2;
+      }
+      .fa-whatsapp {
+        color: #25d366;
+      }
+      .fa-phone {
+        color: #00ff99;
+      }
+      .tiktok {
+        color: #fff;
+        text-shadow: 1px 1px 0 #25f4ee, -1px -1px 0 #fe2c55;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <img id="photo" src="default.jpg" />
+      <h1 id="name">Your Name</h1>
+
+      <a id="ig"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+      <hr />
+      <a id="fb"><i class="fab fa-facebook"></i><span>Facebook</span></a>
+      <hr />
+      <a id="tt"><i class="fab fa-tiktok tiktok"></i><span>TikTok</span></a>
+      <hr />
+      <a id="wa"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+      <hr />
+      <a id="call"><i class="fas fa-phone"></i><span>Call Me</span></a>
+    </div>
+
+    <script>
+      const p = new URLSearchParams(location.search);
+
+      const set = (id, url) => {
+        const el = document.getElementById(id);
+        if (url) {
+          el.href = url;
+        } else {
+          el.style.display = "none";
+        }
+      };
+
+      if (p.get("name"))
+        document.getElementById("name").textContent = p.get("name");
+      if (p.get("img")) document.getElementById("photo").src = p.get("img");
+
+      set("ig", p.get("ig") ? `https://instagram.com/${p.get("ig")}` : null);
+      set("fb", p.get("fb") ? `https://facebook.com/${p.get("fb")}` : null);
+      set("tt", p.get("tt") ? `https://tiktok.com/@${p.get("tt")}` : null);
+      set("wa", p.get("phone") ? `https://wa.me/${p.get("phone")}` : null);
+      set("call", p.get("phone") ? `tel:+${p.get("phone")}` : null);
+    </script>
+  </body>
+</html>
