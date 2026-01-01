@@ -3,29 +3,48 @@
   <meta charset="UTF-8" />
   <h2>مولّد روابط NFC</h2>
 
-  <input placeholder="Name" id="n" /><br />
-  <input placeholder="Phone" id="p" /><br />
-  <input placeholder="Instagram" id="ig" /><br />
-  <input placeholder="Facebook" id="fb" /><br />
-  <input placeholder="TikTok" id="tt" /><br />
+  <input id="name" placeholder="Name (English)" /><br />
+  <input id="img" placeholder="Image URL" /><br />
+  <input id="ig" placeholder="Instagram" /><br />
+  <input id="fb" placeholder="Facebook" /><br />
+  <input id="tt" placeholder="TikTok" /><br />
+  <input id="wa" placeholder="WhatsApp" /><br />
+  <input id="tg" placeholder="Telegram" /><br />
+  <input id="sc" placeholder="Snapchat" /><br />
+  <input id="em" placeholder="Email" /><br />
+  <input id="ph" placeholder="Phone" /><br />
+  <input id="web" placeholder="Website" /><br /><br />
 
   <button onclick="gen()">إنشاء الرابط</button>
-
-  <textarea id="out" style="width: 100%; height: 80px"></textarea>
+  <textarea id="out" style="width: 100%; height: 100px"></textarea>
 
   <script>
     function gen() {
-      const baseURL =
-        "https://basmmazn926-jpg.github.io/social-nfc-card/nfccard.html";
+      const base =
+        "https://basmmazn926-jpg.github.io/social-nfc-card/card.html";
+      const p = new URLSearchParams();
 
-      let url = `${baseURL}?name=${encodeURIComponent(n.value)}&phone=${p.value}`;
+      [
+        "name",
+        "img",
+        "ig",
+        "fb",
+        "tt",
+        "wa",
+        "tg",
+        "sc",
+        "em",
+        "ph",
+        "web",
+      ].forEach((id) => {
+        const v = document.getElementById(id).value.trim();
+        if (v) p.append(id, id == "name" ? v.replace(/\s+/g, "-") : v);
+      });
 
-      if (ig.value) url += `&ig=${ig.value}`;
-      if (fb.value) url += `&fb=${fb.value}`;
-      if (tt.value) url += `&tt=${tt.value}`;
-
-      out.value = url;
+      out.value = base + "?" + p.toString();
     }
   </script>
 </html>
+
+
 
