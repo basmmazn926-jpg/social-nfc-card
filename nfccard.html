@@ -104,6 +104,13 @@
       #web i {
         color: #1e90ff;
       }
+      p {
+        margin-top: 6px;
+        font-size: 14px;
+        color: #ccc;
+        text-align: center;
+        line-height: 1.6;
+      }
     </style>
   </head>
 
@@ -113,6 +120,7 @@
 
       <h1 id="name"></h1>
 
+      <p id="bio"></p>
       <a id="ig"><i class="fab fa-instagram"></i>Instagram</a>
       <hr />
       <a id="fb"><i class="fab fa-facebook"></i>Facebook</a>
@@ -144,9 +152,13 @@
 
       // الاسم
       let name = q.get("name") || "No Name";
-      name = name.replace(/-+/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
       document.getElementById("name").textContent = name;
 
+      //النبذة
+      let bio = q.get("bio");
+      if (bio) {
+        document.getElementById("bio").textContent = bio;
+      }
       // الصورة
       document.getElementById("avatar").src =
         q.get("img") || document.getElementById("avatar").src;
@@ -175,6 +187,7 @@
     </script>
   </body>
 </html>
+
 
 
 
