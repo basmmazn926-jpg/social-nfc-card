@@ -259,8 +259,7 @@
         fields.forEach((id) => {
           const v = document.getElementById(id).value.trim();
           if (v) {
-            if (id === "name") p.append(id, toEnglish(v).replace(/\s+/g, "-"));
-            else p.append(id, v);
+            p.append(id, v);
           }
         });
         p.append("key", "Mahmoud-@2005-31@12");
@@ -269,6 +268,8 @@
     </script>
   </body>
 </html>
+
+
 
 
 
