@@ -67,70 +67,18 @@
   </head>
   <body>
     <h2>مولّد روابط NFC</h2>
-    <!-- <div class="groupform">
-      <label for="name">الاسم</label>
-      <input id="name" placeholder="Name (English)" />
-    </div>
-    <small>اسم العميل بالإنجليزي، أو عربي</small>
-    <div class="groupform">
-      <label for="img">الصورة</label>
-      <input id="img" placeholder="Image URL" />
-    </div>
-    <small>رابط صورة العميل (اختياري)</small>
-    <div class="groupform">
-      <label for="ig">يوزر انستغرام</label>
-      <input id="ig" placeholder="Instagram" />
-    </div>
-    <small>اكتب يوزر انستغرام</small>
-    <div class="groupform">
-      <label for="fb">يوزر فيسبوك</label>
-      <input id="fb" placeholder="Facebook" />
-    </div>
-    <small>اكتب يوزر فيسبوك</small>
-    <div class="groupform">
-      <label for="tt">يوزر تيك توك</label>
-      <input id="tt" placeholder="TikTok" />
-    </div>
-    <small>اكتب يوزر تيك توك</small>
-    <div class="groupform">
-      <label for="wa">واتساب</label>
-      <input id="wa" placeholder="WhatsApp" />
-    </div>
-    <small>اكتب رقم واتساب</small>
-    <div class="groupform">
-      <label for="tg">تيليجرام</label>
-      <input id="tg" placeholder="Telegram" />
-    </div>
-    <small>اكتب يوزر تيليجرام</small>
 
-    <div class="groupform">
-      <label for="sc">سناب</label>
-      <input id="sc" placeholder="Snapchat" />
-    </div>
-    <small>اكتب يوزر سناب</small>
-
-    <div class="groupform">
-      <label for="em">البريد الألكتروني</label>
-      <input id="em" placeholder="Email" />
-    </div>
-    <small>اكتب البريد الألكتروني</small>
-
-    <div class="groupform">
-      <label for="ph">الهاتف</label>
-      <input id="ph" placeholder="Phone" />
-    </div>
-    <small>اكتب رقم الهاتف</small>
-
-    <div class="groupform">
-      <label for="web">ويبسايت</label>
-      <input id="web" placeholder="Website" />
-    </div>     -->
     <div class="maindiv">
       <div class="groupform">
         <label for="name">الاسم</label>
         <input id="name" placeholder="Name (English)" />
       </div>
       <small>اسم العميل بالإنجليزي، أو عربي</small>
+      <div class="groupform">
+        <label for="bio">نبذة</label>
+        <input id="bio" placeholder="نبذة مختصرة" />
+      </div>
+      <small>مثل طالب || صاحب عمل</small>
       <div class="groupform">
         <label for="img">الصورة</label>
         <input id="img" placeholder="Image URL" />
@@ -244,6 +192,7 @@
         // قائمة الحقول
         const fields = [
           "name",
+          "bio",
           "img",
           "ig",
           "fb",
@@ -268,15 +217,3 @@
     </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
