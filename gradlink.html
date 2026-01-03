@@ -17,7 +17,7 @@
       input {
         width: 100%;
         padding: 10px;
-        margin: 6px 0;
+        margin: 10px 0;
         border-radius: 6px;
         border: none;
       }
@@ -42,32 +42,158 @@
       }
       small {
         color: #aaa;
+        position: relative;
+        right: 105px;
+      }
+      .maindiv {
+        border: 2px dotted #fff;
+        border-radius: 15px;
+      }
+      .groupform {
+        width: 98%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        /* margin-top: 10px; */
+      }
+      label {
+        text-align: center;
+        min-width: 100px;
+        font-size: 18px;
+        font-weight: bold;
+        margin-right: 6px;
       }
     </style>
   </head>
   <body>
     <h2>مولّد روابط NFC</h2>
+    <!-- <div class="groupform">
+      <label for="name">الاسم</label>
+      <input id="name" placeholder="Name (English)" />
+    </div>
+    <small>اسم العميل بالإنجليزي، أو عربي</small>
+    <div class="groupform">
+      <label for="img">الصورة</label>
+      <input id="img" placeholder="Image URL" />
+    </div>
+    <small>رابط صورة العميل (اختياري)</small>
+    <div class="groupform">
+      <label for="ig">يوزر انستغرام</label>
+      <input id="ig" placeholder="Instagram" />
+    </div>
+    <small>اكتب يوزر انستغرام</small>
+    <div class="groupform">
+      <label for="fb">يوزر فيسبوك</label>
+      <input id="fb" placeholder="Facebook" />
+    </div>
+    <small>اكتب يوزر فيسبوك</small>
+    <div class="groupform">
+      <label for="tt">يوزر تيك توك</label>
+      <input id="tt" placeholder="TikTok" />
+    </div>
+    <small>اكتب يوزر تيك توك</small>
+    <div class="groupform">
+      <label for="wa">واتساب</label>
+      <input id="wa" placeholder="WhatsApp" />
+    </div>
+    <small>اكتب رقم واتساب</small>
+    <div class="groupform">
+      <label for="tg">تيليجرام</label>
+      <input id="tg" placeholder="Telegram" />
+    </div>
+    <small>اكتب يوزر تيليجرام</small>
 
-    <input id="name" placeholder="Name (English)" /><small
-      >اسم العميل بالإنجليزي، أو عربي سيتم تحويله</small
-    ><br />
-    <input id="img" placeholder="Image URL" /><small
-      >رابط صورة العميل (اختياري)</small
-    ><br />
-    <input id="ig" placeholder="Instagram" /><br />
-    <input id="fb" placeholder="Facebook" /><br />
-    <input id="tt" placeholder="TikTok" /><br />
-    <input id="wa" placeholder="WhatsApp" /><br />
-    <input id="tg" placeholder="Telegram" /><br />
-    <input id="sc" placeholder="Snapchat" /><br />
-    <input id="em" placeholder="Email" /><br />
-    <input id="ph" placeholder="Phone" /><br />
-    <input id="web" placeholder="Website" /><br />
+    <div class="groupform">
+      <label for="sc">سناب</label>
+      <input id="sc" placeholder="Snapchat" />
+    </div>
+    <small>اكتب يوزر سناب</small>
+
+    <div class="groupform">
+      <label for="em">البريد الألكتروني</label>
+      <input id="em" placeholder="Email" />
+    </div>
+    <small>اكتب البريد الألكتروني</small>
+
+    <div class="groupform">
+      <label for="ph">الهاتف</label>
+      <input id="ph" placeholder="Phone" />
+    </div>
+    <small>اكتب رقم الهاتف</small>
+
+    <div class="groupform">
+      <label for="web">ويبسايت</label>
+      <input id="web" placeholder="Website" />
+    </div>     -->
+    <div class="maindiv">
+      <div class="groupform">
+        <label for="name">الاسم</label>
+        <input id="name" placeholder="Name (English)" />
+      </div>
+      <small>اسم العميل بالإنجليزي، أو عربي</small>
+      <div class="groupform">
+        <label for="img">الصورة</label>
+        <input id="img" placeholder="Image URL" />
+      </div>
+      <small>رابط صورة العميل (اختياري)</small>
+      <div class="groupform">
+        <label for="ig">يوزر انستغرام</label>
+        <input id="ig" placeholder="Instagram" />
+      </div>
+      <small>اكتب يوزر انستغرام</small>
+      <div class="groupform">
+        <label for="fb">يوزر فيسبوك</label>
+        <input id="fb" placeholder="Facebook" />
+      </div>
+      <small>اكتب يوزر فيسبوك</small>
+      <div class="groupform">
+        <label for="tt">يوزر تيك توك</label>
+        <input id="tt" placeholder="TikTok" />
+      </div>
+      <small>اكتب يوزر تيك توك</small>
+      <div class="groupform">
+        <label for="wa">واتساب</label>
+        <input id="wa" placeholder="WhatsApp" />
+      </div>
+      <small>اكتب رقم واتساب</small>
+      <div class="groupform">
+        <label for="tg">تيليجرام</label>
+        <input id="tg" placeholder="Telegram" />
+      </div>
+      <small>اكتب يوزر تيليجرام</small>
+
+      <div class="groupform">
+        <label for="sc">سناب</label>
+        <input id="sc" placeholder="Snapchat" />
+      </div>
+      <small>اكتب يوزر سناب</small>
+
+      <div class="groupform">
+        <label for="em">البريد الألكتروني</label>
+        <input id="em" placeholder="Email" />
+      </div>
+      <small>اكتب البريد الألكتروني</small>
+
+      <div class="groupform">
+        <label for="ph">الهاتف</label>
+        <input id="ph" placeholder="Phone" />
+      </div>
+      <small>اكتب رقم الهاتف</small>
+
+      <div class="groupform">
+        <label for="web">ويبسايت</label>
+        <input id="web" placeholder="Website" />
+      </div>
+    </div>
 
     <button onclick="gen()">إنشاء الرابط</button>
     <textarea id="out" readonly></textarea>
 
     <script>
+      const pass = prompt("كلمة المرور:");
+      if (pass !== "MAHMOUD-2005") {
+        document.body.innerHTML = "غير مصرح بالدخول";
+      }
       function toEnglish(name) {
         if (!name) return "";
         const map = {
@@ -137,12 +263,14 @@
             else p.append(id, v);
           }
         });
-
+        p.append("key", "Mahmoud-@2005-31@12");
         document.getElementById("out").value = base + "?" + p.toString();
       }
     </script>
   </body>
 </html>
+
+
 
 
 
